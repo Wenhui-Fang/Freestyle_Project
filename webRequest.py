@@ -26,15 +26,13 @@ print(type(soup))
 
 regions = soup.find("response").find("list").find_all("region")
 
-Price_list = []
-
-regions_list = []
-
-a = 0
-b = 5
-for i in range(a,b):
-    print(regions[a].find("zindex").text)
-    a = a + 1
+for i in range(0,len(regions)):
+    # print(regions[i].find("zindex").text)
+    price = regions[i].find("zindex")
+    if price:
+        print(price.text)
+    else:
+        print("No price available for this region.")
 
 
 
