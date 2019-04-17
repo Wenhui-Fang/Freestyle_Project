@@ -1,17 +1,79 @@
 import requests
-try:
-    r = requests.head("http://api.indeed.com/ads/apisearch?publisher=123412341234123&q=java+developer&l=austin%2C+tx&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2")
-    print(r.status_code)
+import xml.etree.ElementTree as ET
+# import xmltodict
+from bs4 import BeautifulSoup
 
-    if (r.status_code) == 200:
-        print(type(r))
-        
 
-        # where do I specify xml or json?
+request_url = ("https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=wa&city=seattle&childtype=neighborhood")
+response = requests.get(request_url)
+print(response)
+print(type(response))
+contents = response.text
+print(type(contents))
 
-    # prints the int of the status code. Find more at httpstatusrappers.com :)
-except requests.ConnectionError:
-    print("failed to connect")
+soup = BeautifulSoup(contents,'xml')
+
+# print(soup)
+print(type(soup))
+
+breakpoint()
+
+soup.find_all("response").find("list")
+Response_list = soup.find("response").find("list")
+
+regions = soup.find("response").find("list").find_all("region")
+
+price = soup.find("response").find("list").find("region").find_all("zindex")
+
+
+Price_list = []
+
+regions_list = []
+
+
+
+
+
+
+# http://www2.hawaii.edu/~takebaya/cent110/xml_parse/xml_parse.html
+# from bs4 import BeautifulSoup
+# infile = open("books.xml","r")
+# contents = infile.read()
+# soup = BeautifulSoup(contents,'xml')
+# titles = soup.find_all('title')
+# authors = soup.find_all('author')
+# prices = soup.find_all('price')
+# for i in range(0, len(titles)):
+#     print(titles[i].get_text(),"by",end=' ')
+#     print(authors[i].get_text(),end=' ')
+#     print("costs $" + prices[i].get_text())
+
+
+# for i < len(price):
+#     Price_list.append(price[0].text)
+
+
+
+
+
+
+# zillow_api = "https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=wa&city=seattle&childtype=neighborhood"
+
+# try:
+#     r = requests.head(zillow_api)
+#     print(r.status_code)
+
+#     if (r.status_code) == 200:
+#         print(type(r))
+#         print(r)
+
+#         # where do I specify xml or json?
+
+#     # prints the int of the status code. Find more at httpstatusrappers.com :)
+# except requests.ConnectionError:
+#     print("failed to connect")
+
+
 
 # import numpy as np
 # import json
