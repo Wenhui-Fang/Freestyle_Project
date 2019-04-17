@@ -16,22 +16,25 @@ soup = BeautifulSoup(contents,'xml')
 # print(soup)
 print(type(soup))
 
-breakpoint()
+# breakpoint()
 
-soup.find_all("response").find("list")
-Response_list = soup.find("response").find("list")
+# soup.find("response").find_all("list")
+# Response_list = soup.find("response").find("list")
+# price = soup.find("response").find("list").find("region").find_all("zindex")
+
+
 
 regions = soup.find("response").find("list").find_all("region")
-
-price = soup.find("response").find("list").find("region").find_all("zindex")
-
 
 Price_list = []
 
 regions_list = []
 
-
-
+a = 0
+b = 5
+for i in range(a,b):
+    print(regions[a].find("zindex").text)
+    a = a + 1
 
 
 
