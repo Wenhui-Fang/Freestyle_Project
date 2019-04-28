@@ -28,7 +28,8 @@ longtitude = matching_zip["lng"]
 miles_to_commute = input("How many miles are you willing to commute?")
 
 
-nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute), returns=5)
+# nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute), returns=5)
+nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute))
 
 # option1 = nearby_neighborhoods[0].to_dict()
 # option2 = nearby_neighborhoods[1].to_dict()
@@ -45,11 +46,28 @@ nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(mi
 
 
 where_to_live = []
+housing_listing = []
+
 for i in range(0,5):
     city = nearby_neighborhoods[i].major_city
-    where_to_live.append(city)
-
+    if city not in where_to_live:
+        where_to_live.append(city)
+        housing_listing = nearby_neighborhoods[i].monthly_rent_including_utilities_1_b
+print("Below is a lit of neighborhoods where you can live: ")
 print(where_to_live)
+
+
+# print(housing_listing)
+
+print("Monthly rent including utilities for 1b is as follows: ")
+
+print("Price Range: " + "       " + "Number of listings: ")
+
+number_of_listing = len(housing_listing)
+
+for i in range(0, 6):
+    print(housing_listing[0]["values"][i]["x"] + ":             " + str(housing_listing[0]["values"][i]["y"]))
+
 
 # city_no_space = re.sub(' ','',matching_city)
 
