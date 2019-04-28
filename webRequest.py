@@ -2,21 +2,47 @@ import requests
 import xml.etree.ElementTree as ET
 # import xmltodict
 from bs4 import BeautifulSoup
+from uszipcode import SearchEngine
+import re
 
 
-request_url = ("https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=wa&city=seattle&childtype=neighborhood")
-response = requests.get(request_url)
-print(response)
-print(type(response))
-contents = response.text
-print(type(contents))
+userZip = input("Please tell me where you will work by entering the zip code...")
 
-soup = BeautifulSoup(contents,'xml')
 
-# print(soup)
-print(type(soup))
 
-# breakpoint()
+search = SearchEngine(simple_zipcode=False)
+
+zipcode = search.by_zipcode(userZip)
+
+matching_zip = zipcode.to_dict()
+matching_city = matching_zip["major_city"]
+
+# city_no_space = re.sub(' ','',matching_city)
+matching_state = matching_zip["state"]
+
+
+# print(type(zipcode))
+
+breakpoint()
+
+# # request_url = ("https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=wa&city=seattle&childtype=neighborhood")
+# # request_url = ("https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=ny&city=newyork&childtype=neighborhood")
+# request_url = ("https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=ny&city=newyork&childtype=zipcode")
+
+# response = requests.get(request_url)
+
+
+# print(response)
+# print(type(response))
+# contents = response.text
+# print(type(contents))
+
+# soup = BeautifulSoup(contents,'xml')
+
+# # print(soup)
+# print(type(soup))
+
+
 
 # soup.find("response").find_all("list")
 # Response_list = soup.find("response").find("list")
@@ -24,17 +50,18 @@ print(type(soup))
 
 
 
-regions = soup.find("response").find("list").find_all("region")
+# regions = soup.find("response").find("list").find_all("region")
 
-for i in range(0,len(regions)):
-    # print(regions[i].find("zindex").text)
-    price = regions[i].find("zindex")
-    if price:
-        print(price.text)
-    else:
-        print("No price available for this region.")
+# for i in range(0,len(regions)):
+#     # print(regions[i].find("zindex").text)
+#     price = regions[i].find("zindex")
+#     if price:
+#         print(price.text)
+#     else:
+#         print("No price available for this region.")
 
 
+# breakpoint()
 
 # http://www2.hawaii.edu/~takebaya/cent110/xml_parse/xml_parse.html
 # from bs4 import BeautifulSoup
@@ -48,6 +75,7 @@ for i in range(0,len(regions)):
 #     print(titles[i].get_text(),"by",end=' ')
 #     print(authors[i].get_text(),end=' ')
 #     print("costs $" + prices[i].get_text())
+
 
 
 # for i < len(price):
