@@ -6,19 +6,57 @@ from uszipcode import SearchEngine
 import re
 
 
-userZip = input("Please tell me where you will work by entering the zip code...")
+user_zipcode = input("Please tell me where you will work by entering the zip code...")
 
 
 
+#using uszipcode package to request data
 search = SearchEngine(simple_zipcode=False)
 
-zipcode = search.by_zipcode(userZip)
+zipcode = search.by_zipcode(user_zipcode)
 
+#converting data to dictionary
 matching_zip = zipcode.to_dict()
-matching_city = matching_zip["major_city"]
+matching_city = matching_zip["post_office_city"]
+matching_state = matching_zip["state"]
+
+print("So you will be working in " + matching_city + ".")
+
+latitude = matching_zip["lat"]
+longtitude = matching_zip["lng"]
+
+miles_to_commute = input("How many miles are you willing to commute?")
+
+
+nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute), returns=5)
+
+# option1 = nearby_neighborhoods[0].to_dict()
+# option2 = nearby_neighborhoods[1].to_dict()
+# option3 = nearby_neighborhoods[2].to_dict()
+# option4 = nearby_neighborhoods[3].to_dict()
+# option5 = nearby_neighborhoods[4].to_dict()
+
+# print("You can live in the following places: ")
+# print(option1["common_city_list"])
+# print(option2["common_city_list"])
+# print(option3["common_city_list"])
+# print(option4["common_city_list"])
+# print(option5["common_city_list"])
+
+
+where_to_live = []
+for i in range(0,5):
+    city = nearby_neighborhoods[i].major_city
+    where_to_live.append(city)
+
+print(where_to_live)
 
 # city_no_space = re.sub(' ','',matching_city)
-matching_state = matching_zip["state"]
+
+
+
+# test = nearby_neighborhoods[0]
+# test.major_city
 
 
 # print(type(zipcode))
