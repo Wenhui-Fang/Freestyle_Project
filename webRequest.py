@@ -4,15 +4,40 @@ import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 from uszipcode import SearchEngine
 import re
+import PySimpleGUI as sg  
 
 
-user_zipcode = input("Please tell me where you will work by entering the zip code...")
+
+#adapted from https://pypi.org/project/PySimpleGUI/
+
+layout = [[sg.Text('All graphic widgets in one window!', size=(30, 1), font=("Helvetica", 25), text_color='blue')],      
+   [sg.Text('Here is some text.... and a place to enter text')],      
+   [sg.InputText()],      
+   [sg.Checkbox('My first checkbox!'), sg.Checkbox('My second checkbox!', default=True)],      
+   [sg.Radio('My first Radio!     ', "RADIO1", default=True), sg.Radio('My second Radio!', "RADIO1")],      
+   [sg.Multiline(default_text='This is the default Text shoulsd you decide not to type anything',)],      
+[sg.InputCombo(['Combobox 1', 'Combobox 2'], size=(20, 3)),      
+ sg.Slider(range=(1, 100), orientation='h', size=(35, 20), default_value=85)],      
+[sg.Listbox(values=['Listbox 1', 'Listbox 2', 'Listbox 3'], size=(30, 6)),      
+ sg.Slider(range=(1, 100), orientation='v', size=(10, 20), default_value=25),      
+ sg.Slider(range=(1, 100), orientation='v', size=(10, 20), default_value=75),      
+ sg.Slider(range=(1, 100), orientation='v', size=(10, 20), default_value=10)],      
+[sg.Text('_'  * 100, size=(70, 1))],      
+[sg.Text('Choose Source and Destination Folders', size=(35, 1))],      
+[sg.Text('Source Folder', size=(15, 1), auto_size_text=False, justification='right'), sg.InputText('Source'),      
+ sg.FolderBrowse()],      
+[sg.Text('Destination Folder', size=(15, 1), auto_size_text=False, justification='right'), sg.InputText('Dest'),      
+ sg.FolderBrowse()],      
+[sg.Submit(), sg.Cancel(), sg.Button('Customized', button_color=('white', 'green'))]]      
+
+event, values  = sg.Window('Everything bagel', auto_size_text=True, default_element_size=(40, 1)).Layout(layout).Read()    
 
 
+
+user_zipcode = input("Please tell me where you will work / go to college by entering the zip code...")
 
 #using uszipcode package to request data
 search = SearchEngine(simple_zipcode=False)
-
 zipcode = search.by_zipcode(user_zipcode)
 
 #converting data to dictionary
@@ -20,7 +45,7 @@ matching_zip = zipcode.to_dict()
 matching_city = matching_zip["post_office_city"]
 matching_state = matching_zip["state"]
 
-print("So you will be working in " + matching_city + ".")
+print("So you will be studying or working in " + matching_city + ".")
 
 latitude = matching_zip["lat"]
 longtitude = matching_zip["lng"]
@@ -29,33 +54,18 @@ miles_to_commute = input("How many miles are you willing to commute?")
 
 
 # nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute), returns=5)
-nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute))
-
-# option1 = nearby_neighborhoods[0].to_dict()
-# option2 = nearby_neighborhoods[1].to_dict()
-# option3 = nearby_neighborhoods[2].to_dict()
-# option4 = nearby_neighborhoods[3].to_dict()
-# option5 = nearby_neighborhoods[4].to_dict()
-
-# print("You can live in the following places: ")
-# print(option1["common_city_list"])
-# print(option2["common_city_list"])
-# print(option3["common_city_list"])
-# print(option4["common_city_list"])
-# print(option5["common_city_list"])
-
+nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute),returns=10)
 
 where_to_live = []
-housing_listing = []
+housing_listing_1b = []
+print("Below is a lit of neighborhoods where you can live: ")
 
 for i in range(0,5):
-    city = nearby_neighborhoods[i].major_city
+    city = nearby_neighborhoods[i].post_office_city
     if city not in where_to_live:
         where_to_live.append(city)
-        housing_listing = nearby_neighborhoods[i].monthly_rent_including_utilities_1_b
-print("Below is a lit of neighborhoods where you can live: ")
-print(where_to_live)
-
+        housing_listing_1b = nearby_neighborhoods[i].monthly_rent_including_utilities_1_b
+        print(city + "\n")
 
 # print(housing_listing)
 
@@ -63,10 +73,10 @@ print("Monthly rent including utilities for 1b is as follows: ")
 
 print("Price Range: " + "       " + "Number of listings: ")
 
-number_of_listing = len(housing_listing)
+number_of_listing = len(housing_listing_1b)
 
 for i in range(0, 6):
-    print(housing_listing[0]["values"][i]["x"] + ":             " + str(housing_listing[0]["values"][i]["y"]))
+    print(housing_listing_1b[0]["values"][i]["x"] + ":             " + str(housing_listing_1b[0]["values"][i]["y"]))
 
 
 # city_no_space = re.sub(' ','',matching_city)
@@ -77,9 +87,9 @@ for i in range(0, 6):
 # test.major_city
 
 
-# print(type(zipcode))
+# # print(type(zipcode))
 
-breakpoint()
+# breakpoint()
 
 # # request_url = ("https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=wa&city=seattle&childtype=neighborhood")
 # # request_url = ("https://www.zillow.com/webservice/GetRegionChildren.htm?zws-id=X1-ZWz17zh9n8ivpn_7j3qs&state=ny&city=newyork&childtype=neighborhood")
@@ -117,7 +127,7 @@ breakpoint()
 #         print("No price available for this region.")
 
 
-# breakpoint()
+breakpoint()
 
 # http://www2.hawaii.edu/~takebaya/cent110/xml_parse/xml_parse.html
 # from bs4 import BeautifulSoup
