@@ -1,9 +1,4 @@
-import requests
-import xml.etree.ElementTree as ET
-# import xmltodict
-from bs4 import BeautifulSoup
 from uszipcode import SearchEngine
-import re
 import PySimpleGUI as sg  
 
 dashline = "____________________________________"
@@ -39,11 +34,7 @@ if values[4] == "<= $1,000":
         budget = "less than $1,000."
 else:
         budget = "more than $1,000."
-# sg.Popup(event, "Are you sure??") 
 
-# user_zipcode = input("Please tell me where you will work / go to college by entering the zip code...")
-
-#using uszipcode package to request data
 search = SearchEngine(simple_zipcode=False)
 zipcode = search.by_zipcode(user_zipcode)
 
@@ -52,16 +43,14 @@ matching_zip = zipcode.to_dict()
 matching_city = matching_zip["post_office_city"]
 matching_state = matching_zip["state"]
 
-sg.Popup('Input Verification',"So you will be studying or working in " + matching_city + ". And you are willing to commute up to " + str(miles_to_commute) + " miles. Click Ok to Proceed")
-
-# print("So you will be studying or working in " + matching_city + ".")
+sg.Popup('Input Verification',"So you will be studying or working in " + matching_city + ". And you are willing to commute up to " + 
+str(miles_to_commute) + " miles. You want a " + housing_style + " and your budget is " + budget + ". Click Ok to Proceed.")
 
 latitude = matching_zip["lat"]
 longtitude = matching_zip["lng"]
 
 miles_to_commute = 30
 
-# nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute), returns=5)
 nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute),returns=10)
 
 where_to_live = []
@@ -78,7 +67,7 @@ for i in range(0,5):
                 housing_listing = nearby_neighborhoods[i].monthly_rent_including_utilities_1_b
         print(city + "\n")
 
-# print(housing_listing)
+# print housing listing
 
 print("Monthly rent including utilities for a " + housing_style + "is as follows: \n")
 print("Price Range: " + "       " + "Number of listings: ")
@@ -87,5 +76,3 @@ number_of_listing = len(housing_listing)
 
 for i in range(0, 6):
     print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
-
-# breakpoint()
