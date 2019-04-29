@@ -69,7 +69,7 @@ for i in range(0,5):
 
 # print housing listing
 
-print("Monthly rent including utilities for a " + housing_style + "is as follows: \n")
+print("Monthly rent including utilities for a " + housing_style + " is as follows: \n")
 print("Price Range: " + "       " + "Number of listings: ")
 print(dashline)
 number_of_listing = len(housing_listing)
