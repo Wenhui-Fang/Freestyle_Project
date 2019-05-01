@@ -1,4 +1,4 @@
-# Freestyle_Project
+# Tell Me Where To Live
 
 An application that searches nearby neighborhoods for a housing seeker based on his or her needs. It also returns all the housing listings so the user learns the affordability of the neighborhoods.
 
