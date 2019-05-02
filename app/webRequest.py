@@ -88,9 +88,28 @@ number_of_listing = len(housing_listing)
 
 sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
 
-print=sg.Print  
+# print=sg.Print  
 for i in range(0, 6):
-        sg.EasyPrint((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
+        sg.PopupScrolled((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
 
 
-sg.PopupScrolled("Price Range: " + "       " + "Number of listings: ")
+# window_rows = [[sg.Text('SHA-1 and SHA-256 Hashes for the file')],      
+#                  [sg.InputText(), sg.FileBrowse()],      
+#                  [sg.Submit(), sg.Cancel()]]      
+
+# window = sg.Window('SHA-1 & 256 Hash', window_rows)    
+
+# event, values = window.Read()   
+
+# window = sg.Window('My window title', layout)   
+# window.Read
+
+# window = sg.Window('My PySimpleGUIWeb Window',
+#                   layout=layout,
+#                    default_element_size=(12,1),
+#                    font='Helvetica 18',
+#                    )
+
+
+
+sg.PopupScrolled(print("aaaaaa"))
