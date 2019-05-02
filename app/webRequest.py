@@ -41,7 +41,7 @@ else:
 search = SearchEngine(simple_zipcode=False)
 zipcode = search.by_zipcode(user_zipcode)
 
-breakpoint()
+# breakpoint()
 
 #converting data to dictionary
 matching_zip = zipcode.to_dict()
@@ -82,5 +82,15 @@ print("Price Range: " + "       " + "Number of listings: ")
 print(dashline)
 number_of_listing = len(housing_listing)
 
+# for i in range(0, 6):
+#     print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
+
+
+sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
+
+print=sg.Print  
 for i in range(0, 6):
-    print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
+        sg.EasyPrint((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
+
+
+sg.PopupScrolled("Price Range: " + "       " + "Number of listings: ")
