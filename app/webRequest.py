@@ -90,7 +90,7 @@ sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
 
 # print=sg.Print  
 for i in range(0, 6):
-        sg.PopupScrolled((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
+        sg.EasyPrint((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
 
 
 # window_rows = [[sg.Text('SHA-1 and SHA-256 Hashes for the file')],      
@@ -110,6 +110,4 @@ for i in range(0, 6):
 #                    font='Helvetica 18',
 #                    )
 
-
-
-sg.PopupScrolled(print("aaaaaa"))
+sg.PopupScrolled(print("Price Range: " + "       " + "Number of listings: "))
