@@ -18,16 +18,19 @@ event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, de
 # print(values)
 # {'_zipcode_': '20057', 0: True, 1: True, 2: True, 3: False, 4: '<= $1,000'}
 
-if values[0]:
+#43236 doesn't work
+
+
+if values[0] == True:
         miles_to_commute = 10
 else:
         miles_to_commute = 30
 
 user_zipcode = values['_zipcode_']  
 
-if values[2]:
+if values[2] == True:
         housing_style = "studio"
-elif values[3]:
+elif values[3] == True:
         housing_style = "1b1b"
 
 if values[4] == "<= $1,000":
@@ -38,9 +41,14 @@ else:
 search = SearchEngine(simple_zipcode=False)
 zipcode = search.by_zipcode(user_zipcode)
 
+breakpoint()
+
 #converting data to dictionary
 matching_zip = zipcode.to_dict()
-matching_city = matching_zip["post_office_city"]
+if matching_zip["post_office_city"] != "None":
+        matching_city = matching_zip["post_office_city"]
+else:
+        matching_city = (matching_zip["county"] + ", " + matching_zip['state'])      
 matching_state = matching_zip["state"]
 
 sg.Popup('Input Verification',"So you will be studying or working in " + matching_city + ". And you are willing to commute up to " + 
