@@ -23,10 +23,13 @@ event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, de
 
 # breakpoint()
 
-#Input validation - Zip Code;
-# if not values['_zipcode_'].isdigit: 
-#         sg.Popup("Warning!","You must enter a right zip code. The application will terminate now. Please start again...")
-#         sys.exit()
+#Input validation - Zip Code
+try:
+         zipcodes.matching(values['_zipcode_'])
+except: 
+        TypeError
+        sg.Popup("Warning!","You must enter a right zip code. The application will terminate now. Please start again...")
+        sys.exit()
 
 #Input validation - Miles to commute;
 if values[0] == True:
@@ -41,14 +44,16 @@ else:
 
 user_zipcode = values['_zipcode_']  
 
+#Read users' preferred housing;
 if values[2] == True:
         housing_style = "studio"
 elif values[3] == True:
         housing_style = "1b1b"
 
+#Read users' budget
 if values[4] == "<= $1,000":
         budget = "less than $1,000."
-else:
+elif values[4] == "> $1,000":
         budget = "more than $1,000."
 
 search = SearchEngine(simple_zipcode=False)
@@ -58,10 +63,13 @@ zipcode = search.by_zipcode(user_zipcode)
 
 #converting data to dictionary
 matching_zip = zipcode.to_dict()
+
+#Some zip code are PO Box which requires validation
 if matching_zip["post_office_city"] != "None":
         matching_city = matching_zip["post_office_city"]
 else:
-        matching_city = (matching_zip["county"] + ", " + matching_zip['state'])      
+        matching_city = (matching_zip["county"] + ", " + matching_zip['state'])
+
 matching_state = matching_zip["state"]
 
 sg.Popup('Input Verification',"So you will be studying or working in " + matching_city + ". And you are willing to commute up to " + 
