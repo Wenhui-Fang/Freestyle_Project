@@ -4,6 +4,9 @@ import pytest
 import sys
 import zipcodes
 
+def enlarge(i):
+    return i * 100
+
 #Simpe GUI adapted from https://pypi.org/project/PySimpleGUI/, allowing the users to set their preferences
 layout = [[sg.Text('Welcome to use Tell-Me-Where-To-Live', size=(30, 1), font=("Helvetica", 25), text_color='blue')],      
    [sg.Text('Please enter the zip code where you will work or go to college')],      
@@ -97,7 +100,7 @@ for i in range(0, 6):
 
 # breakpoint()
 
-# sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
+sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
 
 # print=sg.Print  
 # for i in range(0, 6):
