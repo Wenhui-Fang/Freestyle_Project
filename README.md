@@ -10,15 +10,15 @@ These instructions will get you a copy of the project up and running on your loc
 2. Python 3.7
 3. Pip
 4. uszipcode: https://pypi.org/project/uszipcode/
-  Install
-  $ pip install uszipcode
+  <br />Install
+  <br />$ pip install uszipcode
   
-  To upgrade to latest version:
-  $ pip install --upgrade uszipcode
+  <br />To upgrade to latest version:
+  <br />$ pip install --upgrade uszipcode
 
 5. PySimpleGUI: https://pypi.org/project/PySimpleGUI/
-  Install
-  $ pip install PySimpleGUI
+  <br />Install
+  <br />$ pip install PySimpleGUI
 
 # Installation
 A step by step series of examples that tell you how to get a development env running
