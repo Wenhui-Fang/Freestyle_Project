@@ -1,10 +1,13 @@
 from uszipcode import SearchEngine
 import PySimpleGUI as sg  
+import pytest
+import sys
+import zipcodes
 
 dashline = "____________________________________"
 
 #Simpe GUI adapted from https://pypi.org/project/PySimpleGUI/
-layout = [[sg.Text('Welcome to use the App', size=(30, 1), font=("Helvetica", 25), text_color='blue')],      
+layout = [[sg.Text('Welcome to use Tell-Me-Where-To-Live', size=(30, 1), font=("Helvetica", 25), text_color='blue')],      
    [sg.Text('Please enter the zip code where you will work or go to college')],      
    [sg.Text('zipcode', size=(15, 1)), sg.InputText('20057', key='_zipcode_')],
    [sg.Text('Please determine how many miles you are willing to commute, and your desired room plan.',)],       
@@ -18,13 +21,23 @@ event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, de
 # print(values)
 # {'_zipcode_': '20057', 0: True, 1: True, 2: True, 3: False, 4: '<= $1,000'}
 
-#43236 doesn't work
+# breakpoint()
 
+#Input validation - Zip Code;
+# if not values['_zipcode_'].isdigit: 
+#         sg.Popup("Warning!","You must enter a right zip code. The application will terminate now. Please start again...")
+#         sys.exit()
 
+#Input validation - Miles to commute;
 if values[0] == True:
         miles_to_commute = 10
-else:
+elif values[1] == True:
         miles_to_commute = 30
+elif values[0] == True and values[0] == True:
+        miles_to_commute = 30
+else: 
+        sg.Popup("Warning!","You must select miles you are willing to commute. The application will terminate now. Please start again...")
+        sys.exit()
 
 user_zipcode = values['_zipcode_']  
 
