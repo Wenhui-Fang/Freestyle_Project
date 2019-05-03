@@ -4,8 +4,6 @@ import pytest
 import sys
 import zipcodes
 
-dashline = "____________________________________"
-
 #Simpe GUI adapted from https://pypi.org/project/PySimpleGUI/, allowing the users to set their preferences
 layout = [[sg.Text('Welcome to use Tell-Me-Where-To-Live', size=(30, 1), font=("Helvetica", 25), text_color='blue')],      
    [sg.Text('Please enter the zip code where you will work or go to college')],      
@@ -17,9 +15,6 @@ layout = [[sg.Text('Welcome to use Tell-Me-Where-To-Live', size=(30, 1), font=("
 [sg.InputCombo(['<= $1,000', '> $1,000'], size=(20, 3))],      
 [sg.Submit(), sg.Cancel()]]    
 event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, default_element_size=(40, 1)).Layout(layout).Read()    
-
-# print(values)
-# {'_zipcode_': '20057', 0: True, 1: True, 2: True, 3: False, 4: '<= $1,000'}
 
 #Input validation using zipcodes package - Zipcode; terminates the application if wrong input is captured
 try:
@@ -60,7 +55,7 @@ zipcode = search.by_zipcode(user_zipcode)
 #converting data to dictionary
 matching_zip = zipcode.to_dict()
 
-#Some zip code are associated with PO Box which requires a different way of presenting location
+#Some zip code are associated with PO Boxes which requires a different way of presenting location
 if matching_zip["post_office_city"] != "None":
         matching_city = matching_zip["post_office_city"]
 else:
@@ -81,7 +76,7 @@ where_to_live = []
 housing_listing = []
 print("Below is a list of neighborhoods you can consider: \n")
 
-#searching 5
+#searching 5 results for now
 for i in range(0,6):
     city = nearby_neighborhoods[i].post_office_city
     if city not in where_to_live:
@@ -93,11 +88,9 @@ for i in range(0,6):
         print(city + "\n")
 
 # print housing listing
-
 print("Monthly rent including utilities for a " + housing_style + " is as follows: \n")
 print("Price Range: " + "       " + "Number of listings: ")
-print(dashline)
-number_of_listing = len(housing_listing)
+print("____________________________________")
 
 for i in range(0, 6):
     print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
