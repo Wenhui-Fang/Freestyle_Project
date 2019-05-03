@@ -79,8 +79,8 @@ if __name__ == "__main__":
 
         where_to_live = []
         housing_listing = []
-        print("Below is a list of neighborhoods you can consider: \n")
 
+        print("Below is a list of neighborhoods you can consider: \n")
         #searching 5 results for now
         for i in range(0,6):
                 city = nearby_neighborhoods[i].post_office_city
@@ -90,9 +90,10 @@ if __name__ == "__main__":
                                 housing_listing = nearby_neighborhoods[i].monthly_rent_including_utilities_studio_apt
                         elif housing_style == "1b1b":
                                 housing_listing = nearby_neighborhoods[i].monthly_rent_including_utilities_1_b
-                                print(city + "\n")
+                        print(city + "\n")
 
         # print housing listing
+        
         print("Monthly rent including utilities for a " + housing_style + " is as follows: \n")
         print("Price Range: " + "       " + "Number of listings: ")
         print("____________________________________")
@@ -102,8 +103,9 @@ if __name__ == "__main__":
 
         # breakpoint()
 
-        sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
-
+        # sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
+        
+        # requires future exploration for a user-friendly window
         # print=sg.Print  
         # for i in range(0, 6):
         #         sg.Print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
