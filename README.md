@@ -30,6 +30,9 @@ And repeat
 until finished
 End with an example of getting some data out of the system or using it for a little demo
 
+# Envrionment Setting
+This project does not require any envrionment setting 
+
 # Running the tests
 Explain how to run the automated tests for this system
 
