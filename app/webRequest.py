@@ -6,7 +6,6 @@ import zipcodes
 def enlarge(i):
     return i * 100
 
-
 if __name__ == "__main__":
 
         #Simpe GUI adapted from https://pypi.org/project/PySimpleGUI/, allowing the users to set their preferences
@@ -21,7 +20,8 @@ if __name__ == "__main__":
         [sg.Submit(), sg.Cancel()]]    
         event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, default_element_size=(40, 1)).Layout(layout).Read()    
 
-        #Input validation using zipcodes package - Zipcode; terminates the application if wrong input is captured
+        #Input validation using zipcodes package; terminates the application if wrong input is captured;
+        #Sample, default vlaues captured from user inputs: {'_zipcode_': '20057', 0: True, 1: True, 2: True, 3: False, 4: '<= $1,000'}
         try:
                 zipcodes.matching(values['_zipcode_'])
         except: 
@@ -46,13 +46,14 @@ if __name__ == "__main__":
         elif values[3] == True:
                 housing_style = "1b1b"
 
-        #Read the users' budget
+        #Read the users' budget;
         if values[4] == "<= $1,000":
                 budget = "less than $1,000."
         elif values[4] == "> $1,000":
                 budget = "more than $1,000."
 
-        #Input Validation complete, start using built-in functions within uszipcode package to search data
+        #Input Validation complete, start using built-in functions within uszipcode package to request data
+        #Refer to https://pypi.org/project/uszipcode/ for more info regarding below functions
         user_zipcode = values['_zipcode_']  
         search = SearchEngine(simple_zipcode=False)
         zipcode = search.by_zipcode(user_zipcode)
@@ -60,7 +61,7 @@ if __name__ == "__main__":
         #converting data to dictionary
         matching_zip = zipcode.to_dict()
 
-        #Some zip code are associated with PO Boxes which requires a different way of presenting location
+        #Some zipcodes are associated with PO Boxes which require a different way of presenting location
         if matching_zip["post_office_city"] != "None":
                 matching_city = matching_zip["post_office_city"]
         else:
@@ -68,28 +69,28 @@ if __name__ == "__main__":
 
         #Let the users know their input with a pop-up window
         sg.Popup('Input Verification',"So you will be studying or working in " + matching_city + ". And you are willing to commute up to " + 
-        str(miles_to_commute) + " miles. You want a " + housing_style + " and your budget is " + budget + ". Click Ok to Proceed.")
+        str(miles_to_commute) + " miles. You want a " + housing_style + " and your budget is " + budget + ". Click Ok to Proceed...")
 
         #using built-in data within uszipcode package to determine latitude and longtitude of the target zipcode/location
         latitude = matching_zip["lat"]
         longtitude = matching_zip["lng"]
 
-        #using built-in functions within uszipcode package to search nearby neighborhodds, setting maximum 10 neighborhoods for now
+        #using a built-in function within uszipcode package to search nearby neighborhodds, setting maximum 10 neighborhoods for now
         nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute),returns=10)
 
         where_to_live = []
         housing_listing = []
 
         print("Below is a list of neighborhoods you can consider: \n")
-        #searching 5 results for now
-        for i in range(0,6):
+        #search and append the results
+        for i in range(0,len(nearby_neighborhoods)):
                 city = nearby_neighborhoods[i].post_office_city
                 if city not in where_to_live:
                         where_to_live.append(city)
                         if housing_style == "studio":
-                                housing_listing = nearby_neighborhoods[i].monthly_rent_including_utilities_studio_apt
+                                housing_listing.append(nearby_neighborhoods[i].monthly_rent_including_utilities_studio_apt)
                         elif housing_style == "1b1b":
-                                housing_listing = nearby_neighborhoods[i].monthly_rent_including_utilities_1_b
+                                housing_listing.append(nearby_neighborhoods[i].monthly_rent_including_utilities_1_b)
                         print(city + "\n")
 
         # print housing listing
@@ -98,14 +99,16 @@ if __name__ == "__main__":
         print("Price Range: " + "       " + "Number of listings: ")
         print("____________________________________")
 
-        for i in range(0, 6):
-                print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
-
         # breakpoint()
+        #print(housing_listing[1][0]["values"][0]["x"])
 
+        #print housing listings based on 6 price ranges determined by the package;
+        for i in range(0, 6):
+                print((housing_listing[0][0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0][0]["values"][i]["y"]).rjust(25)))
+
+        ############################ For future exploration which is to build a user-friendly output window ##################################
+        # breakpoint()
         # sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
-        
-        # requires future exploration for a user-friendly window
         # print=sg.Print  
         # for i in range(0, 6):
         #         sg.Print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
