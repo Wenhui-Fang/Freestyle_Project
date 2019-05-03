@@ -45,7 +45,7 @@ Contributing
 Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
 
 # Author
-Wenhui Fang, a senior at Georgetown University
+Wenhui Fang, a senior at Georgetown University and a python beginner 
 
 # License
 This project is licensed under the MIT License - see the LICENSE.md file for details
