@@ -1,12 +1,13 @@
 # Tell Me Where To Live
 
-TellMeWhereToLive is an application that helps housing seekers conduct preliminary research by searching all nearby neighborhoods that meet their needs. It also returns all the housing listings in these neighborhoods so the users learn the affordability of the neighborhoods.
+Tell-Me-Where-To-Live is an application that helps housing seekers conduct preliminary research by searching all neighborhoods that meet their commute needs. It returns the list of neighborhoods housing seekers could consider, as well as all the housing listings in these neighborhoods. The application allows housing seekers learn the affordability of the neighborhoods in a few seconds.
 
 # Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 # Prerequisites
-What things you need to install the software and how to install them
+Internet connection
+Web Browser
 
 Give examples
 
