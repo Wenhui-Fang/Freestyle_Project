@@ -19,6 +19,10 @@ These instructions will get you a copy of the project up and running on your loc
   <br />Install
   <br />$ pip install PySimpleGUI
 
+6. zipcodes: https://pypi.org/project/zipcodes/
+  <br />Install
+  <br />$ pip install zipcodes
+
 # Installation
 A step by step series of examples that tell you how to get a development env running
 
