@@ -6,10 +6,11 @@ Tell-Me-Where-To-Live is an application that helps housing seekers conduct preli
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 # Prerequisites
-Internet connection
-Web Browser
-
-Give examples
+1. Anaconda 3.7
+2. Python 3.7
+3. Pip
+4. uszipcode: https://pypi.org/project/uszipcode/
+5. PySimpleGUI: https://pypi.org/project/PySimpleGUI/
 
 # Installation
 A step by step series of examples that tell you how to get a development env running
