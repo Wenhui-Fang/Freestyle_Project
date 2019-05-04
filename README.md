@@ -36,8 +36,12 @@ For this Project, install package dependencies by specifying the requirements fi
 
 <br />pip install -r requirements.txt
 
-Then execute the script and verify it has run successfully:
+Then, create and activate a new Anaconda virtual environment, perhaps named "tell-me-where-to-live-env":
 
+conda create -n tell-me-where-to-live-env
+conda activate tell-me-where-to-live-env
+
+Then execute the script and verify it has run successfully:
 <br />python app/webRequest.py 
 
 # Envrionment Setting
