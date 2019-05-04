@@ -44,7 +44,7 @@ Then navigate to your local root path and execute the script by running the comm
 <br />python app/webRequest.py 
 
 # Envrionment Setting
-This project requires only a gitignore to ensure caches (__pycache__. and pytest_cache) caused by automated testings will not interupt the execution of the program. No other envrionment setting needed as this code retrieves data using a third party package, not API keys.
+This project requires only a gitignore to ensure caches (__pycache__. and pytest_cache) caused by automated testings will not interupt the execution of the program. No other envrionment setting is currently needed as this code retrieves data using a third party package, not API keys.
 
 # Security Setting
 As mentioned above, no confidential information will be used so security setting is unnecessary. 
