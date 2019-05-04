@@ -3,10 +3,12 @@
 from app.webRequest import enlarge
 from app.webRequest import returnCity
 
-def test_enlarge(): # note the function name is prefixed with "test_"
-    result = enlarge(3) # directly invoke the function we want to test
-    assert result == 300 # describe expectations for desired behavior
+#Adapted from in class exercise to set up automated testing
+def test_enlarge(): 
+    result = enlarge(3) 
+    assert result == 300 
 
+#Test if the package returns desired city
 def test_returnCity():
     result = returnCity(11355)
     assert result == "FLUSHING"
