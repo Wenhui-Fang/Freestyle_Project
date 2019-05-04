@@ -33,6 +33,7 @@ A step by step series of examples that tell you how to get a local application r
 
 When you install Python, you also get Python's package manager, pip. Use pip to install and manage third-party Python packages.
 For this Project, install package dependencies by specifying the requirements filepath:
+
 <br />pip install -r requirements.txt
 
 
