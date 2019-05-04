@@ -37,10 +37,10 @@ For this Project, install package dependencies by specifying the requirements fi
 
 Then, create and activate a new Anaconda virtual environment, perhaps named "tell-me-where-to-live-env":
 
-<br />conda create -n tell-me-where-to-live-env
+conda create -n tell-me-where-to-live-env
 <br />conda activate tell-me-where-to-live-env
 
-Then execute the script and verify it has run successfully:
+Then navigate to your local root path and execute the script by running the command below:
 <br />python app/webRequest.py 
 
 # Envrionment Setting
