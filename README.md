@@ -33,13 +33,12 @@ A step by step series of examples that tell you how to get a local application r
 
 When you install Python, you also get Python's package manager, pip. Use pip to install and manage third-party Python packages.
 For this Project, install package dependencies by specifying the requirements filepath:
-
 <br />pip install -r requirements.txt
 
 Then, create and activate a new Anaconda virtual environment, perhaps named "tell-me-where-to-live-env":
 
-conda create -n tell-me-where-to-live-env
-conda activate tell-me-where-to-live-env
+<br />conda create -n tell-me-where-to-live-env
+<br />conda activate tell-me-where-to-live-env
 
 Then execute the script and verify it has run successfully:
 <br />python app/webRequest.py 
