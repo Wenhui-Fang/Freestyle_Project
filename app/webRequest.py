@@ -114,13 +114,11 @@ if __name__ == "__main__":
                 print((housing_listing[0][0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0][0]["values"][i]["y"]).rjust(25)))
 
         ############################ For future exploration which is to build a user-friendly output window ##################################
-        
         # breakpoint()
         # print(housing_listing[1][0]["values"][0]["x"])
         # sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
         # print=sg.Print  
         # for i in range(0, 6):
         #         sg.Print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
-
-        # #to hold above print list
+        # to hold above print list
         # sg.PopupScrolled(print("Price Range: " + "       " + "Number of listings: "))
