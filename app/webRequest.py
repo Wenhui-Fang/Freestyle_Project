@@ -99,15 +99,14 @@ if __name__ == "__main__":
         print("Price Range: " + "       " + "Number of listings: ")
         print("____________________________________")
 
-        # breakpoint()
-        #print(housing_listing[1][0]["values"][0]["x"])
-
         #print housing listings based on 6 price ranges determined by the package;
         for i in range(0, 6):
                 print((housing_listing[0][0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0][0]["values"][i]["y"]).rjust(25)))
 
         ############################ For future exploration which is to build a user-friendly output window ##################################
         # breakpoint()
+        # breakpoint()
+        # print(housing_listing[1][0]["values"][0]["x"])
         # sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
         # print=sg.Print  
         # for i in range(0, 6):
