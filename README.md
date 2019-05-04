@@ -1,6 +1,6 @@
 # Tell Me Where To Live
 
-Tell-Me-Where-To-Live is an application that helps housing seekers conduct preliminary research by searching all neighborhoods that meet their commute needs (e.g. the distance from their target location based on zipcode). It returns the list of neighborhoods housing seekers could potentially consider, as well as all the housing listings in these neighborhoods. The application allows housing seekers to learn the affordability of the neighborhoods in a few seconds so they can plan forward.
+Tell-Me-Where-To-Live is an application that helps housing seekers conduct preliminary research by searching all neighborhoods that meet their commute needs (e.g. the distance from their target location based on zipcode). It returns the list of neighborhoods housing seekers could potentially consider, as well as all the housing listings in these neighborhoods classified by price range. The application allows housing seekers to learn the affordability of the neighborhoods in a few seconds so they can plan forward.
 
 # Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
@@ -29,22 +29,22 @@ These instructions will get you a copy of the project up and running on your loc
   <br />https://pypi.org/project/zipcodes/
   
 # Installation
-A step by step series of examples that tell you how to get a local application running
+A step by step series of examples that tell you how to get a local copy of application running
 
-When you install Python, you also get Python's package manager, pip. Use pip to install and manage third-party Python packages.
-For this Project, install package dependencies by specifying the requirements filepath:
-<br />pip install -r requirements.txt
-
-Then, create and activate a new Anaconda virtual environment, perhaps named "tell-me-where-to-live-env":
+When you install Python, you also get Python's package manager, pip. You can use pip to install and manage third-party Python packages.
+For this Project, first create and activate a new Anaconda virtual environment, perhaps named "tell-me-where-to-live-env":
 
 conda create -n tell-me-where-to-live-env
 <br />conda activate tell-me-where-to-live-env
+
+Then install package dependencies by specifying the requirements:
+<br />pip install -r requirements.txt
 
 Then navigate to your local root path and execute the script by running the command below:
 <br />python app/webRequest.py 
 
 # Envrionment Setting
-This project does not require any envrionment setting as no confidential information will be used. 
+This project requires only a gitignore to ensure caches (__pycache__. and pytest_cache) caused by automated testings will not interupt the execution of the program. No other envrionment setting needed as this code retrieves data using a third party package, not API keys.
 
 # Security Setting
 As mentioned above, no confidential information will be used so security setting is unnecessary. 
