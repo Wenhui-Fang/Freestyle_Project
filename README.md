@@ -36,14 +36,9 @@ For this Project, install package dependencies by specifying the requirements fi
 
 <br />pip install -r requirements.txt
 
+Then execute the script and verify it has run successfully:
 
-Say what the step will be
-
-Give the example
-And repeat
-
-until finished
-End with an example of getting some data out of the system or using it for a little demo
+<br />python app/webRequest.py 
 
 # Envrionment Setting
 This project does not require any envrionment setting as no confidential information will be used. 
