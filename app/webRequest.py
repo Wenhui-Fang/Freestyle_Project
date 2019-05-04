@@ -1,7 +1,9 @@
 from uszipcode import SearchEngine
+from uszipcode import Zipcode
 import PySimpleGUI as sg  
 import sys
 import zipcodes
+
 
 def enlarge(i):
     return i * 100
@@ -21,7 +23,7 @@ if __name__ == "__main__":
         event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, default_element_size=(40, 1)).Layout(layout).Read()    
 
         #Input validation using zipcodes package; terminates the application if wrong input is captured;
-        #Sample, default vlaues captured from user inputs: {'_zipcode_': '20057', 0: True, 1: True, 2: True, 3: False, 4: '<= $1,000'}
+        #Sample vlaues captured from user inputs: {'_zipcode_': '20057', 0: True, 1: True, 2: True, 3: False, 4: '<= $1,000'}
         try:
                 zipcodes.matching(values['_zipcode_'])
         except: 
