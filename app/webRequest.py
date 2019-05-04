@@ -31,10 +31,10 @@ if __name__ == "__main__":
                 sg.Popup("Warning!","You must enter a right zip code. The application will terminate now. Please start again...")
                 sys.exit()
 
-        #Input validation - Miles to commute;
-        if values[0] == True:
+        #Input validation - Miles to commute; terminates the application if no option is selected;
+        if values[0] == True and values[1] == False:
                 miles_to_commute = 10
-        elif values[1] == True:
+        elif values[1] == True and values[0] == False:
                 miles_to_commute = 30
         elif values[0] == True and values[0] == True:
                 miles_to_commute = 30
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         #converting data to dictionary
         matching_zip = zipcode.to_dict()
 
-        #Some zipcodes are associated with PO Boxes which require a different way of presenting location
+        #Some zipcodes are associated with PO Boxes which require a different way of presenting the location
         if matching_zip["post_office_city"] != "None":
                 matching_city = matching_zip["post_office_city"]
         else:
@@ -77,7 +77,7 @@ if __name__ == "__main__":
         latitude = matching_zip["lat"]
         longtitude = matching_zip["lng"]
 
-        #using a built-in function within uszipcode package to search nearby neighborhodds, setting maximum 10 neighborhoods for now
+        #using a built-in function within uszipcode package to search nearby neighborhodds, setting maximum 10 neighborhoods for now to shorten search time
         nearby_neighborhoods = search.by_coordinates(latitude, longtitude, radius=int(miles_to_commute),returns=10)
 
         where_to_live = []
