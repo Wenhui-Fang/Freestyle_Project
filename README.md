@@ -52,19 +52,12 @@ As mentioned above, no confidential information will be used so security setting
 # Running the tests
 To run automated tests, consider installing pytest using pip:
 <br />pip install pytest
-The pytest package is generally used as a command-line utility for running pre-defined files of "test" code.
+<br />The pytest package is generally used as a command-line utility for running pre-defined files of "test" code.
 Then, navigate to the local root path, and invoke pytest using the command below:
 <br />pytest #> 1 passed in 0.01 seconds
 
 # Deployment
-Add additional notes about how to deploy this on a live system
-
-Built With
-Dropwizard - The web framework used
-Maven - Dependency Management
-ROME - Used to generate RSS Feeds
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+As this application contains a graphica user interface created by PySimpleGUI, using local envrionment is recommended. Further exploration needs to be done for online deployment.
 
 # Author
 Wenhui Fang, a senior at Georgetown University and a python beginner 
