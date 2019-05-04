@@ -4,9 +4,11 @@ import PySimpleGUI as sg
 import sys
 import zipcodes
 
-
 def enlarge(i):
-    return i * 100
+        return i * 100
+
+# def returnCity(i):
+#         return matching_zip["post_office_city"]
 
 if __name__ == "__main__":
 
@@ -96,7 +98,6 @@ if __name__ == "__main__":
                         print(city + "\n")
 
         # print housing listing
-        
         print("Monthly rent including utilities for a " + housing_style + " is as follows: \n")
         print("Price Range: " + "       " + "Number of listings: ")
         print("____________________________________")
