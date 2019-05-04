@@ -11,6 +11,12 @@ def returnCity(i):
         city =zipcodes.matching(str(i))
         return city[0]["city"]
 
+def returnState(i):
+        search = SearchEngine(simple_zipcode=False)
+        zipcode = search.by_zipcode(str(i))
+        matching_zip = zipcode.to_dict()
+        return matching_zip["state"]
+
 if __name__ == "__main__":
 
         #Simpe GUI adapted from https://pypi.org/project/PySimpleGUI/, allowing the users to set their preferences
@@ -102,8 +108,6 @@ if __name__ == "__main__":
         print("Monthly rent including utilities for a " + housing_style + " is as follows: \n")
         print("Price Range: " + "       " + "Number of listings: ")
         print("____________________________________")
-
-        # breakpoint()
 
         #print housing listings based on 6 price ranges determined by the package;
         for i in range(0, 6):
