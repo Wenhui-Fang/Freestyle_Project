@@ -1,22 +1,23 @@
 # Tell Me Where To Live
 
-Tell-Me-Where-To-Live is an application that helps housing seekers conduct preliminary research by searching all neighborhoods that meet their commute needs (e.g. the distance from their target location). It returns the list of neighborhoods housing seekers could consider, as well as all the housing listings in these neighborhoods. The application allows housing seekers to learn the affordability of the neighborhoods in a few seconds.
+Tell-Me-Where-To-Live is an application that helps housing seekers conduct preliminary research by searching all neighborhoods that meet their commute needs (e.g. the distance from their target location based on zipcode). It returns the list of neighborhoods housing seekers could potentially consider, as well as all the housing listings in these neighborhoods. The application allows housing seekers to learn the affordability of the neighborhoods in a few seconds so they can plan forward.
 
 # Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 # Prerequisites
 1. Anaconda 3.7
 2. Python 3.7
 3. Pip
-4. uszipcode: https://pypi.org/project/uszipcode/
-  <br />Install
+4. uszipcode: 
+  <br />Install:
   <br />$ pip install uszipcode
   <br />To upgrade to latest version:
   <br />$ pip install --upgrade uszipcode
-
+  <br />For further exploration, see documentation 
+        https://pypi.org/project/uszipcode/
 5. PySimpleGUI: https://pypi.org/project/PySimpleGUI/
-  <br />Install
+  <br />Install:
   <br />$ pip install PySimpleGUI
 
 6. zipcodes: https://pypi.org/project/zipcodes/
