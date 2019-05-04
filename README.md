@@ -15,15 +15,19 @@ These instructions will get you a copy of the project up and running on your loc
   <br />To upgrade to latest version:
   <br />$ pip install --upgrade uszipcode
   <br />For further exploration, see documentation 
-        https://pypi.org/project/uszipcode/
-5. PySimpleGUI: https://pypi.org/project/PySimpleGUI/
+  <br />https://pypi.org/project/uszipcode/
+5. PySimpleGUI: 
   <br />Install:
   <br />$ pip install PySimpleGUI
+  <br />For further exploration, see documentation 
+  <br />https://pypi.org/project/PySimpleGUI/
 
-6. zipcodes: https://pypi.org/project/zipcodes/
+6. zipcodes: 
   <br />Install
   <br />$ pip install zipcodes
-
+  <br />For further exploration, see documentation 
+  <br />https://pypi.org/project/zipcodes/
+  
 # Installation
 A step by step series of examples that tell you how to get a development env running
 
