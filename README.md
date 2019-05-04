@@ -50,16 +50,11 @@ This project requires only a gitignore to ensure caches (__pycache__. and pytest
 As mentioned above, no confidential information will be used so security setting is unnecessary. 
 
 # Running the tests
-Explain how to run the automated tests for this system
-
-Break down into end to end tests
-Explain what these tests test and why
-
-Give an example
-And coding style tests
-Explain what these tests test and why
-
-Give an example
+To run automated tests, consider installing pytest using pip:
+<br />pip install pytest
+The pytest package is generally used as a command-line utility for running pre-defined files of "test" code.
+Then, navigate to the local root path, and invoke pytest using the command below:
+<br />pytest #> 1 passed in 0.01 seconds
 
 # Deployment
 Add additional notes about how to deploy this on a live system
