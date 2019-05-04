@@ -51,9 +51,9 @@ As mentioned above, no confidential information will be used so security setting
 
 # Running the tests
 To run automated tests, consider installing pytest using pip:
-<br />pip install pytest
+<br />$ pip install pytest
 <br />The pytest package is generally used as a command-line utility for running pre-defined files of "test" code.
-Then, navigate to the local root path, and invoke pytest using the command below:
+Navigate to the local root path, and invoke pytest using the command below:
 <br />pytest #> 1 passed in 0.01 seconds
 
 # Deployment
