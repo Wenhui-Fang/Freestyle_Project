@@ -1,6 +1,6 @@
 from uszipcode import SearchEngine
 from uszipcode import Zipcode
-import PySimpleGUI as sg  
+import PySimpleGUI as sg
 import sys
 import zipcodes
 
@@ -20,22 +20,24 @@ def returnState(i):
 if __name__ == "__main__":
 
         #Simpe GUI adapted from https://pypi.org/project/PySimpleGUI/, allowing the users to set their preferences
-        layout = [[sg.Text('Welcome to use Tell-Me-Where-To-Live', size=(30, 1), font=("Helvetica", 25), text_color='blue')],      
-        [sg.Text('Please enter the zip code where you will work or go to college')],      
-        [sg.Text('zipcode', size=(15, 1)), sg.InputText('20057', key='_zipcode_')],
-        [sg.Text('Please determine how many miles you are willing to commute, and your desired room plan.',)],       
-        [sg.Checkbox('< 10 miles', size=(10,1)),  sg.Checkbox('10 - 30 miles', default=True)],
-        [sg.Radio('I want a studio!     ', "RADIO1", default=True, size=(10,1)), sg.Radio('I want 1b1b!', "RADIO1")],      
-        [sg.Text('My Monthly Budget is:', size=(18, 1))],    
-        [sg.InputCombo(['<= $1,000', '> $1,000'], size=(20, 3))],      
-        [sg.Submit(), sg.Cancel()]]    
-        event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, default_element_size=(40, 1)).Layout(layout).Read()    
+        layout = [
+                [sg.Text('Welcome to use Tell-Me-Where-To-Live', size=(30, 1), font=("Helvetica", 25), text_color='blue')],
+                [sg.Text('Please enter the zip code where you will work or go to college')],
+                [sg.Text('zipcode', size=(15, 1)), sg.InputText('20057', key='_zipcode_')],
+                [sg.Text('Please determine how many miles you are willing to commute, and your desired room plan.',)],
+                [sg.Checkbox('< 10 miles', size=(10,1)),  sg.Checkbox('10 - 30 miles', default=True)],
+                [sg.Radio('I want a studio!     ', "RADIO1", default=True, size=(10,1)), sg.Radio('I want 1b1b!', "RADIO1")],
+                [sg.Text('My Monthly Budget is:', size=(18, 1))],
+                [sg.InputCombo(['<= $1,000', '> $1,000'], size=(20, 3))],
+                [sg.Submit(), sg.Cancel()]
+        ]
+        event, values  = sg.Window('OPIM 242 FreeStyle Project', auto_size_text=True, default_element_size=(40, 1)).Layout(layout).Read()
 
         #Input validation using zipcodes package; terminates the application if wrong input is captured;
         #Sample vlaues captured from user inputs: {'_zipcode_': '20057', 0: True, 1: True, 2: True, 3: False, 4: '<= $1,000'}
         try:
                 zipcodes.matching(values['_zipcode_'])
-        except: 
+        except:
                 TypeError
                 sg.Popup("Warning!","You must enter a right zip code. The application will terminate now. Please start again...")
                 sys.exit()
@@ -47,7 +49,7 @@ if __name__ == "__main__":
                 miles_to_commute = 30
         elif values[0] == True and values[0] == True:
                 miles_to_commute = 30
-        else: 
+        else:
                 sg.Popup("Warning!","You must select miles you are willing to commute. The application will terminate now. Please start again...")
                 sys.exit()
 
@@ -65,7 +67,7 @@ if __name__ == "__main__":
 
         #Input Validation complete, start using built-in functions within uszipcode package to request data
         #Refer to https://pypi.org/project/uszipcode/ for more info regarding below functions
-        user_zipcode = values['_zipcode_']  
+        user_zipcode = values['_zipcode_']
         search = SearchEngine(simple_zipcode=False)
         zipcode = search.by_zipcode(user_zipcode)
 
@@ -79,7 +81,7 @@ if __name__ == "__main__":
                 matching_city = (matching_zip["county"] + ", " + matching_zip['state'])
 
         #Let the users know their input with a pop-up window
-        sg.Popup('Input Verification',"So you will be studying or working in " + matching_city + ". And you are willing to commute up to " + 
+        sg.Popup('Input Verification',"So you will be studying or working in " + matching_city + ". And you are willing to commute up to " +
         str(miles_to_commute) + " miles. You want a " + housing_style + " and your budget is " + budget + ". Click Ok to Proceed...")
 
         #using built-in data within uszipcode package to determine latitude and longtitude of the target zipcode/location
@@ -103,7 +105,7 @@ if __name__ == "__main__":
                         elif housing_style == "1b1b":
                                 housing_listing.append(nearby_neighborhoods[i].monthly_rent_including_utilities_1_b)
                         print(city + "\n")
-                
+
         # print housing listing
         print("Monthly rent including utilities for a " + housing_style + " is as follows: \n")
         print("Price Range: " + "       " + "Number of listings: ")
@@ -117,7 +119,7 @@ if __name__ == "__main__":
         # breakpoint()
         # print(housing_listing[1][0]["values"][0]["x"])
         # sg.Popup("Below is a list of neighborhoods you can consider:", where_to_live)
-        # print=sg.Print  
+        # print=sg.Print
         # for i in range(0, 6):
         #         sg.Print((housing_listing[0]["values"][i]["x"]).ljust(10) + ":"+ (str(housing_listing[0]["values"][i]["y"]).rjust(25)))
         # to hold above print list
