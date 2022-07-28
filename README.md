@@ -1,6 +1,6 @@
 # Tell Me Where To Live
 
-Tell-Me-Where-To-Live is an application that helps housing seekers conduct preliminary research by searching all neighborhoods that meet their commute needs (e.g. the distance from their target location based on zipcode). It returns the list of neighborhoods housing seekers could potentially consider, as well as all the housing listings in these neighborhoods classified by price range. The application allows housing seekers to learn the affordability of the neighborhoods in a few seconds so they can plan forward.
+Tell-Me-Where-To-Live is an application that helps home seekers conduct preliminary research by searching all neighborhoods that meet their commute needs (e.g. the distance from their target location based on zipcode). It returns the list of neighborhoods home seekers could potentially consider, as well as all the housing listings in these neighborhoods classified by price range. The application allows home seekers to learn the affordability of the neighborhoods in a few seconds so they can plan forward.
 
 # Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
